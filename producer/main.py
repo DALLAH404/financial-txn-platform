@@ -1,7 +1,7 @@
 import argparse
 import time
 from datetime import datetime, timedelta
-
+import boto3
 from generator import generate_transaction
 
 
@@ -23,9 +23,12 @@ def parse_args():
 
 
 def main():
+    kinesis = boto3.client('kinesis')
     args = parse_args()
     start_time = datetime.now()
     count = 0
+    project_name="financial-txn"
+    environment="dev"
 
     while True:
         if args.max_events is not None and count >= args.max_events:
@@ -36,8 +39,13 @@ def main():
             print(f"Reached duration limit ({args.duration}s), stopping.")
             break
 
+        
         txn = generate_transaction()
-        print(txn.model_dump_json(indent=2))
+        kinesis.put_record(
+            StreamName = f"{project_name}-{environment}-kinesis-stream",
+            Data=txn.model_dump_json(),
+            PartitionKey="account_id",
+        )
         count += 1
         time.sleep(args.interval)
 
