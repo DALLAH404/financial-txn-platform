@@ -77,10 +77,6 @@ resource "aws_kinesis_firehose_delivery_stream" "extended_s3_stream" {
 
     buffering_size = 64
 
-    dynamic_partitioning_configuration {
-      enabled = "true"
-    }
-
     processing_configuration {
       enabled = "true"
 
