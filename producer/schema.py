@@ -23,21 +23,3 @@ class Transaction(BaseModel):
     event_timestamp: datetime
     ingestion_timestamp: datetime
     
-# txn = Transaction(
-#     txn_id="abc-123",
-#     account_id="acc-1",
-#     merchant_id="merch-1",
-#     amount=56.5,
-#     currency="USD",
-#     txn_type="purchase",
-#     channel="pos",
-#     status="completed",
-#     merchant_category="grocery",
-#     location={"country": "EG", "city": "Cairo"},   
-#     device_id="dev-1",
-#     ip_address="1.2.3.4",
-#     event_timestamp=datetime.now(),
-#     ingestion_timestamp=datetime.now(),
-# )
-
-# print(txn.event_timestamp)
