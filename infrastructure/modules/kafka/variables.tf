@@ -10,3 +10,6 @@ variable "my_ip_cidr" {
 variable "ssh_public_key" {
   type = string
 }
+variable "raw_bucket_arn" {
+  type = string
+}

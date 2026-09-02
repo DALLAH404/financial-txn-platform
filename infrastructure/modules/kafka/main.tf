@@ -77,6 +77,7 @@ resource "aws_instance" "producer" {
   instance_type          = "t3.micro"
   key_name               = aws_key_pair.kafka_key.key_name
   vpc_security_group_ids = [aws_security_group.producer_sg.id]
+  iam_instance_profile   = aws_iam_instance_profile.consumer_profile.name
 
   tags = {
     Name = "${var.project_name}-${var.environment}-producer"
