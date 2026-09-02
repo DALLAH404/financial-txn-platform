@@ -1,9 +1,14 @@
 import argparse
 import time
 from datetime import datetime, timedelta
-import boto3
 from generator import generate_transaction
+from confluent_kafka import Producer
+import json
 
+conf = {
+    "bootstrap.servers": "54.77.148.9:9094",
+}
+producer = Producer(conf)
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Fake transaction event producer")
@@ -23,7 +28,6 @@ def parse_args():
 
 
 def main():
-    kinesis = boto3.client('kinesis')
     args = parse_args()
     start_time = datetime.now()
     count = 0
@@ -41,15 +45,17 @@ def main():
 
         
         txn = generate_transaction()
-        kinesis.put_record(
-            StreamName = f"{project_name}-{environment}-kinesis-stream",
-            Data=txn.model_dump_json(),
-            PartitionKey="account_id",
+        producer.produce(
+        "transactions",
+        key=txn.account_id,
+        value=txn.model_dump_json(),
         )
+        producer.poll(0)
         count += 1
         time.sleep(args.interval)
 
     print(f"Generated {count} events total.")
+    producer.flush()
 
 
 if __name__ == "__main__":

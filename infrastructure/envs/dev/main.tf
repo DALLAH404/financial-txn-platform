@@ -4,9 +4,10 @@ module "s3" {
   environment  = "dev"
 }
 
-module "kinesis" {
-  source         = "../../modules/kinesis"
+module "kafka" {
+  source         = "../../modules/kafka"
   project_name   = "financial-txn"
   environment    = "dev"
-  raw_bucket_arn = module.s3.raw_bucket_arn
+  my_ip_cidr     = "128.77.96.165/32"
+  ssh_public_key = file("~/.ssh/kafka-portfolio.pub")
 }

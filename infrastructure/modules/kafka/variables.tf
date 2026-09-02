@@ -4,6 +4,9 @@ variable "project_name" {
 variable "environment" {
   type = string
 }
-variable "raw_bucket_arn" {
+variable "my_ip_cidr" {
+  type = string
+}
+variable "ssh_public_key" {
   type = string
 }
