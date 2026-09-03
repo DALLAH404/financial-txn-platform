@@ -1,0 +1,21 @@
+merchant_id,merchant_name,merchant_category,country
+merch-1,"Collins, Torres and Bush",grocery,GN
+merch-2,Yoder-Smith,grocery,CH
+merch-3,White-Ayers,utilities,SC
+merch-4,"Juarez, Quinn and Williams",electronics,JO
+merch-5,"Gomez, Salazar and Pineda",electronics,KG
+merch-6,Lambert-Gonzalez,grocery,ZW
+merch-7,"Stephens, Jackson and Holmes",electronics,SE
+merch-8,Maynard-Johnson,restaurant,GN
+merch-9,Velasquez Group,travel,AZ
+merch-10,Horne-Henry,restaurant,NO
+merch-11,Lee-Chandler,grocery,MN
+merch-12,"Stokes, Wilson and Graham",electronics,IT
+merch-13,"Mckinney, Lucas and Jackson",utilities,NA
+merch-14,Roman Ltd,travel,GN
+merch-15,Hernandez and Sons,utilities,TN
+merch-16,Rivera Group,grocery,LT
+merch-17,"Brown, Schneider and Wilson",electronics,CD
+merch-18,Griffith-Frazier,utilities,SO
+merch-19,"Warren, Dorsey and Moore",utilities,AZ
+merch-20,"Carson, Doyle and Torres",travel,SM
